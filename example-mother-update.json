@@ -1,0 +1,8 @@
+{
+  "username": "jane_doe_updated",
+  "email": "jane_new@example.com",
+  "due_date": "2024-01-15",
+  "baby_birth_date": "2024-02-20",
+  "notes": "Updated notes about the mother",
+  "isActive": true
+}
