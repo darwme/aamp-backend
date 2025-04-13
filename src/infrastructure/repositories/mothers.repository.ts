@@ -16,6 +16,19 @@ export class MothersRepository implements IMothersRepository {
         .input('due_date', sql.Date, data.due_date ? new Date(data.due_date) : null)
         .input('baby_birth_date', sql.Date, data.baby_birth_date ? new Date(data.baby_birth_date) : null)
         .input('notes', sql.Text, data.notes || null)
+        // Nuevos campos para mothers_profiles
+        .input('weight', sql.Decimal(5,2), data.weight != null ? data.weight : null)
+        .input('height', sql.Decimal(5,2), data.height != null ? data.height : null)
+        .input('blood_type', sql.VarChar(3), data.blood_type || null)
+        .input('allergies', sql.Text, data.allergies || null)
+        .input('medical_history', sql.Text, data.medical_history || null)
+        .input('fecha_nacimiento', sql.Date, data.fecha_nacimiento ? new Date(data.fecha_nacimiento) : null)
+        .input('semanas_gestacion', sql.Int, data.semanas_gestacion !== undefined ? data.semanas_gestacion : null)
+        .input('numero_de_hijos', sql.Int, data.numero_de_hijos !== undefined ? data.numero_de_hijos : null)
+        .input('tipo_embarazo', sql.VarChar(50), data.tipo_embarazo || null)
+        .input('plan_parto', sql.VarChar(50), data.plan_parto || null)
+        .input('fecha_ultimo_control', sql.Date, data.fecha_ultimo_control ? new Date(data.fecha_ultimo_control) : null)
+        .input('mother_concept', sql.Text, data.mother_concept || null)
         .output('user_id', sql.VarChar);
       const result = await request.execute('CreateMother');
       console.log('CreateMother result:', result);
@@ -66,6 +79,19 @@ export class MothersRepository implements IMothersRepository {
         .input('due_date', sql.Date, data.due_date ? new Date(data.due_date) : null)
         .input('baby_birth_date', sql.Date, data.baby_birth_date ? new Date(data.baby_birth_date) : null)
         .input('notes', sql.Text, data.notes || null)
+        // Nuevos campos para mothers_profiles
+        .input('weight', sql.Decimal(5,2), data.weight != null ? data.weight : null)
+        .input('height', sql.Decimal(5,2), data.height != null ? data.height : null)
+        .input('blood_type', sql.VarChar(3), data.blood_type || null)
+        .input('allergies', sql.Text, data.allergies || null)
+        .input('medical_history', sql.Text, data.medical_history || null)
+        .input('fecha_nacimiento', sql.Date, data.fecha_nacimiento ? new Date(data.fecha_nacimiento) : null)
+        .input('semanas_gestacion', sql.Int, data.semanas_gestacion !== undefined ? data.semanas_gestacion : null)
+        .input('numero_de_hijos', sql.Int, data.numero_de_hijos !== undefined ? data.numero_de_hijos : null)
+        .input('tipo_embarazo', sql.VarChar(50), data.tipo_embarazo || null)
+        .input('plan_parto', sql.VarChar(50), data.plan_parto || null)
+        .input('fecha_ultimo_control', sql.Date, data.fecha_ultimo_control ? new Date(data.fecha_ultimo_control) : null)
+        .input('mother_concept', sql.Text, data.mother_concept || null)
         .input('isActive', sql.Bit, data.isActive !== undefined ? data.isActive : null)
         .execute('UpdateMother');
 
