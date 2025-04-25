@@ -11,7 +11,6 @@ COPY . .
 
 RUN npm rebuild bcrypt --build-from-source
 
-COPY .env .env
 
 RUN npm install typescript
 
