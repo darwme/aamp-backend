@@ -8,6 +8,7 @@ import cors from 'cors';
 import chokidar from 'chokidar';
 import path from 'path';
 import { rolesRoutes } from './interfaces/routes/roles.routes';
+import dniRoutes from './interfaces/routes/dni.routes'; // Importa las rutas de DNI
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -29,6 +30,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/mothers', mothersRoutes);
 app.use('/api/roles', rolesRoutes);
+app.use('/api/dni', dniRoutes); // Registra las rutas de DNI
 
 app.get('/', (req, res) => {
   res.status(200).send({
@@ -86,15 +88,18 @@ const watchForChanges = () => {
   });
 };
 
-dbConnection.connect()
-  .then(() => {
-    startServer();
-    watchForChanges();
-  })
-  .catch(error => {
-    console.error('Fallo al conectar a la base de datos:', error.message);
-    console.error('La aplicación se cerrará debido a la falla de conexión.');
-    setTimeout(() => process.exit(1), 1000);
-  });
+// dbConnection.connect()
+//   .then(() => {
+//     startServer();
+//     watchForChanges();
+//   })
+//   .catch(error => {
+//     console.error('Fallo al conectar a la base de datos:', error.message);
+//     console.error('La aplicación se cerrará debido a la falla de conexión.');
+//     setTimeout(() => process.exit(1), 1000);
+//   });
+
+startServer();
+watchForChanges();
 
 export default app;
